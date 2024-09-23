@@ -1,5 +1,5 @@
 
-# Desafio Técnico - Estágio Programador Django
+# Desafio Técnico - Desenvolvedor Django
 
 A empresa **Pegho**, especializada em recrutamento e seleção, está crescendo rapidamente e percebeu a necessidade de um sistema que centralize as informações de seus candidatos. Para resolver esse desafio, a Pegho contratou a nossa consultoria para desenvolver um sistema que facilite o processo de contratação, permitindo que os candidatos enviem suas informações de currículo de forma organizada.
 
