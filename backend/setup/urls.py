@@ -1,9 +1,15 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from pegho.views import DadosPessoaisViewSet, ContatoViewSet, ExperienciaProfissionalViewSet, FormacaoAcademicaViewSet
 
-from pegho.views import index
+router = DefaultRouter()
+router.register('dados-pessoais', DadosPessoaisViewSet)
+router.register('contato', ContatoViewSet)
+router.register('experiencia-profissional', ExperienciaProfissionalViewSet)
+router.register('formacao-academica', FormacaoAcademicaViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", index, name="index"),
+    path("api/", include(router.urls)),
 ]
