@@ -1,4 +1,3 @@
-# curriculos/serializers.py
 from rest_framework import serializers
 from pegho.models import DadosPessoais, Contato, ExperienciaProfissional, FormacaoAcademica
 
