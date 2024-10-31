@@ -25,16 +25,12 @@
 <div *ngIf="showExperienceForm">
     <div style="margin: 1rem;">
         <p class="text-center">Onde você trabalhou</p>
-        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleFirstName-1" placeholder="Nome Completo" name="nome"></div>
+        <div class="form-group"><input class="form-control form-control-user" type="text" id="cargo" placeholder="Cargo" name="cargo"></div>
         <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="examplePasswordInput" placeholder="CPF" name="cpf" min="11" max="11"></div>
-            <div class="col-sm-6"><input class="form-control form-control-user" id="exampleRepeatPasswordInput" placeholder="Nascimento" name="nascimento" type="date"></div>
+            <div class="col-sm-8 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="empresa" placeholder="Empresa" name="empresa" min="11" max="11"></div>
+            <div class="col-sm-4"><input class="form-control form-control-user" id="exampleRepeatPasswordInput" placeholder="Nascimento" name="nascimento" type="date"></div>
         </div>
-        <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" id="examplePasswordInput-1" placeholder="Email" name="email" min="11" max="11"></div>
-            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="examplePasswordInput-2" placeholder="Contato" name="contato" min="11" max="11"></div>
-        </div>
-        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleFirstName-2" placeholder="Endereço" name="endereco"></div>
+        <div class="form-group"><input class="form-control form-control-user" type="text" id="descricao" placeholder="Descrição" name="descricao"></div>
         <hr>
     </div>
     <div><button class="btn btn-primary btn-block text-white justify-content-end btn-user" type="button" (click)="toggleExperienceForm()">Avançar</button></div>

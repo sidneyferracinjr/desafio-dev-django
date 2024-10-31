@@ -3,9 +3,7 @@ from django.db import models
 
 class DadosPessoais(models.Model):
     nome = models.CharField(max_length=100, blank=False, null=False)
-    cpf = models.CharField(
-        max_length=14, blank=False, null=False, default="000.000.000-00"
-    )
+    cpf = models.CharField(max_length=14, blank=False, null=False, unique=True)
     data_nascimento = models.DateField(blank=False, null=False)
 
 
@@ -18,11 +16,13 @@ class Contato(models.Model):
 class ExperienciaProfissional(models.Model):
     cargo = models.CharField(max_length=100)
     empresa = models.CharField(max_length=100)
-    periodo = models.CharField(max_length=50)
+    de_periodo = models.DateField()
+    ate_periodo = models.DateField()
     descricao = models.TextField()
 
 
 class FormacaoAcademica(models.Model):
     instituicao = models.CharField(max_length=100)
     curso = models.CharField(max_length=100)
-    periodo = models.CharField(max_length=50)
+    de_periodo = models.DateField()
+    ate_periodo = models.DateField()
