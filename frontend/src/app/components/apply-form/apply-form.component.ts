@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Candidate } from '../../_models/candidate';
+import { CandidateService } from '../../_services/candidate.service';
 
 @Component({
   selector: 'app-apply-form',
@@ -6,6 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./apply-form.component.css']
 })
 export class ApplyFormComponent {
+  candidate: Candidate = {
+    nome: '',
+    cpf: '',
+    dataNascimento: new Date(),
+    email: '',
+    telefone: '',
+    endereco: '',
+    empresa: '',
+    cargo: '',
+    dataInicio: new Date(),
+    dataFim: new Date(),
+    descricao: '',
+    instituicao: '',
+    curso: '',
+    dataConclusao: new Date()
+  };
+
+  constructor(private candidateService: CandidateService) {}
+
   showPersonalDataForm: boolean = true;
   showExperienceForm: boolean = false;
   showQualificationForm: boolean = false;
@@ -32,13 +53,24 @@ export class ApplyFormComponent {
 
   updateProgress() {
     if (this.showExperienceForm) {
-      this.progressWidth = 50; // Aumenta a largura da barra de progresso para 50%
+      this.progressWidth = 50;
     } else if (this.showQualificationForm) {
-      this.progressWidth = 75; // Aumenta a largura da barra de progresso para 75%
+      this.progressWidth = 75;
     } else if (this.showSendedForm) {
-      this.progressWidth = 100; // Aumenta a largura da barra de progresso para 100%
+      this.progressWidth = 100;
     } else {
-      this.progressWidth = 0; // Redefine a largura da barra de progresso para 0%
+      this.progressWidth = 0;
     }
+  }
+
+  onSubmit() {
+    this.candidateService.saveCandidate(this.candidate).subscribe(response => {
+      console.log('Dados salvos com sucesso', response);
+      this.showPersonalDataForm = false;
+      this.showQualificationForm = false;
+      this.showSendedForm = true;
+    }, error => {
+      console.error('Erro ao salvar dados', error);
+    });
   }
 }

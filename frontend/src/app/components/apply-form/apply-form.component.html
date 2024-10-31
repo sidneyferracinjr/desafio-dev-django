@@ -1,83 +1,110 @@
-
-<div class="user">
-    <div class="progress">
-        <div class="progress-bar" [style.width.%]="progressWidth" [attr.aria-valuenow]="progressWidth" aria-valuemin="0" aria-valuemax="100">{{progressWidth}}%</div>
-    </div>
+<div class="progress">
+    <div class="progress-bar" [style.width.%]="progressWidth" [attr.aria-valuenow]="progressWidth" aria-valuemin="0" aria-valuemax="100">{{progressWidth}}%</div>
 </div>
-<div *ngIf="showPersonalDataForm">
-    <div style="margin: 1rem;">
-        <p class="text-center">Preencha com seus dados</p>
-        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleFirstName-1" placeholder="Nome Completo" name="nome"></div>
-        <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="examplePasswordInput" placeholder="CPF" name="cpf" min="11" max="11"></div>
-            <div class="col-sm-6"><input class="form-control form-control-user" id="exampleRepeatPasswordInput" placeholder="Nascimento" name="nascimento" type="date"></div>
-        </div>
-        <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" id="examplePasswordInput-1" placeholder="Email" name="email" min="11" max="11"></div>
-            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="examplePasswordInput-2" placeholder="Contato" name="contato" min="11" max="11"></div>
-        </div>
-        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleFirstName-2" placeholder="Endereço" name="endereco"></div>
-        <hr>
-    </div>
-    <div><button class="btn btn-primary btn-block text-white justify-content-end btn-user" type="button" (click)="togglePersonalDataForm()">Avançar</button></div>
-</div>
-
-<div *ngIf="showExperienceForm">
-    <div style="margin: 1rem;">
-        <p class="text-center">Onde você trabalhou</p>
-        <div class="form-group"><input class="form-control form-control-user" type="text" id="cargo" placeholder="Cargo" name="cargo"></div>
-        <div class="form-group row">
-            <div class="col-sm-8 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="empresa" placeholder="Empresa" name="empresa" min="11" max="11"></div>
-            <div class="col-sm-4"><input class="form-control form-control-user" id="exampleRepeatPasswordInput" placeholder="Nascimento" name="nascimento" type="date"></div>
-        </div>
-        <div class="form-group"><input class="form-control form-control-user" type="text" id="descricao" placeholder="Descrição" name="descricao"></div>
-        <hr>
-    </div>
-    <div><button class="btn btn-primary btn-block text-white justify-content-end btn-user" type="button" (click)="toggleExperienceForm()">Avançar</button></div>
-</div>
-
-<div *ngIf="showQualificationForm">
-    <div style="margin: 1rem;">
-        <p class="text-center">Preencha com seus dados</p>
-        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleFirstName-1" placeholder="Nome Completo" name="nome"></div>
-        <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="examplePasswordInput" placeholder="CPF" name="cpf" min="11" max="11"></div>
-            <div class="col-sm-6"><input class="form-control form-control-user" id="exampleRepeatPasswordInput" placeholder="Nascimento" name="nascimento" type="date"></div>
-        </div>
-        <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="email" id="examplePasswordInput-1" placeholder="Email" name="email" min="11" max="11"></div>
-            <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="examplePasswordInput-2" placeholder="Contato" name="contato" min="11" max="11"></div>
-        </div>
-        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleFirstName-2" placeholder="Endereço" name="endereco"></div>
-        <hr>
-    </div>
-    <div><button class="btn btn-primary btn-block text-white justify-content-end btn-user" type="button" (click)="toggleQualificationForm()">Enviar Candidatura</button></div>
-</div>
-
-<div *ngIf="showSendedForm">
-    <div style="margin: 1rem;">
-        <div class="p-5">
-            <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-2">Candidatura enviada!</h1>
-                <p class="mb-4">Quer deixar alguma sugestão de melhoria ou elogio?
-                    Escreva no campo abaixo, vamos adorar saber sua opinião!
-                </p>
+<form class="user" (ngSubmit)="onSubmit()" #form="ngForm">
+    <div *ngIf="showPersonalDataForm">
+        <div style="margin: 1rem;">
+            <p class="text-center">Preencha com seus dados</p>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" id="nomeCompleto" placeholder="Nome Completo" name="nomeCompleto" [(ngModel)]="candidate.nome">
             </div>
-                <div class="form-group">
-                    <input type="email" class="form-control form-control-user"
-                        id="exampleInputEmail" aria-describedby="emailHelp"
-                        placeholder="Escreva aqui...">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input class="form-control form-control-user" type="text" id="cpf" placeholder="CPF" name="cpf" min="11" max="11" [(ngModel)]="candidate.cpf">
                 </div>
-                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                    Enviar
-                </a>
-            <hr>
-            <div class="text-center">
-                <a class="small" href="register.html">Voltar à página inicial</a>
+                <div class="col-sm-6">
+                    <input class="form-control form-control-user" id="nascimento" placeholder="Nascimento" name="nascimento" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="candidate.dataNascimento">
+                </div>
             </div>
-            <div class="text-center">
-                <a class="small" href="login.html">Visite nosso site</a>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input class="form-control form-control-user" type="email" id="email" placeholder="Email" name="email" [(ngModel)]="candidate.email">
+                </div>
+                <div class="col-sm-6">
+                    <input class="form-control form-control-user" type="text" id="contato" placeholder="Contato" name="contato" [(ngModel)]="candidate.telefone">
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" id="endereco" placeholder="Endereço" name="endereco" [(ngModel)]="candidate.endereco">
+            </div>
+            <hr>
+            <div>
+                <button class="btn btn-primary btn-block text-white justify-content-end btn-user" type="button" (click)="togglePersonalDataForm()">Avançar</button>
             </div>
         </div>
     </div>
-</div>
+
+    <div *ngIf="showExperienceForm">
+        <div style="margin: 1rem;">
+            <p class="text-center">Onde você trabalhou</p>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" id="empresa" placeholder="Empresa" name="empresa" [(ngModel)]="candidate.empresa">
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" id="cargo" placeholder="Cargo" name="cargo" [(ngModel)]="candidate.cargo">
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <input class="form-control form-control-user" type="text" id="dataInicio" name="dataInicio" placeholder="Data de Início" onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="candidate.dataInicio">
+                </div>
+                <div class="col-sm-6">
+                    <input class="form-control form-control-user" type="text" id="dataTermino" placeholder="Data de Término" name="dataTermino" onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="candidate.dataFim">
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" style="height: 6rem;" id="descricao" placeholder="Descrição" name="descricao" [(ngModel)]="candidate.descricao">
+            </div>
+            <hr>
+            <div>
+                <button class="btn btn-primary btn-block text-white justify-content-end btn-user" type="button" (click)="toggleExperienceForm()">Avançar</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showQualificationForm">
+        <div style="margin: 1rem;">
+            <p class="text-center">Onde você estudou</p>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" id="nomeInstituicao" placeholder="Nome da Instituição" name="nomeInstituicao" [(ngModel)]="candidate.instituicao">
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 mb-3 mb-sm-0">
+                    <input class="form-control form-control-user" type="text" id="curso" placeholder="Curso" name="curso" [(ngModel)]="candidate.curso">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <input class="form-control form-control-user" id="dataDe" placeholder="De" name="dataDe" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="candidate.dataConclusao">
+                </div>
+            </div>
+            <hr>
+            <div>
+                <button class="btn btn-primary btn-block text-white justify-content-end btn-user" type="button" (click)="toggleQualificationForm()">Enviar Candidatura</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showSendedForm">
+        <div style="margin: 1rem;">
+            <div class="p-5">
+                <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-2">Candidatura enviada!</h1>
+                    <p class="mb-4">Quer deixar alguma sugestão de melhoria ou elogio?
+                        Escreva no campo abaixo, vamos adorar saber sua opinião!
+                    </p>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="sugestao" placeholder="Escreva aqui..." name="sugestao">
+                </div>
+                <a href="login.html" class="btn btn-primary btn-user btn-block">Enviar</a>
+                <hr>
+                <div class="text-center">
+                    <a class="small" href="register.html">Voltar à página inicial</a>
+                </div>
+                <div class="text-center">
+                    <a class="small" href="login.html">Visite nosso site</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -24,5 +24,4 @@ class ExperienciaProfissional(models.Model):
 class FormacaoAcademica(models.Model):
     instituicao = models.CharField(max_length=100)
     curso = models.CharField(max_length=100)
-    de_periodo = models.DateField()
-    ate_periodo = models.DateField()
+    data_conclusao = models.DateField()
