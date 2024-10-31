@@ -1,27 +1,49 @@
-# Frontend
+# Desafio Dev Django - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+Este é o frontend do projeto Desafio Dev Django, desenvolvido com Angular.
 
-## Development server
+## Requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Node.js
+- Angular CLI
 
-## Code scaffolding
+## Instalação
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/seu-usuario/desafio-dev-django.git
+    ```
+2. Navegue até o diretório do frontend:
+    ```bash
+    cd desafio-dev-django/frontend
+    ```
+3. Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-## Build
+## Executando o Projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para iniciar o servidor de desenvolvimento, execute:
+```bash
+ng serve
+```
+O aplicativo estará disponível em `http://localhost:4200`.
 
-## Running unit tests
+## Estrutura do Projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- `src/` - Código-fonte do aplicativo Angular
+- `assets/` - Arquivos estáticos
+- `environments/` - Configurações de ambiente
 
-## Running end-to-end tests
+## Contribuição
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Faça um fork do projeto
+2. Crie uma nova branch (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
+4. Faça push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
 
-## Further help
+## Licença
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](../LICENSE) para mais detalhes.
